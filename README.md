@@ -11,6 +11,7 @@ Inject style changes directly to children rather than using static stylesheets.
 
 ## Usage
 
+```javascript
   <Transitioner
     timingFunction={String?}
     duration={Number?}
@@ -20,12 +21,13 @@ Inject style changes directly to children rather than using static stylesheets.
   />
 
   TransitionDetailsObject = {
-    duration: Number?
-    delay: Number?
-    timingFunction: String?
-    from: { /* Styles at start */ }
+    duration: Number?,
+    delay: Number?,
+    timingFunction: String?,
+    from: { /* Styles at start */ },
     to: { /* Styles at end */ }
   }
+```
 
 ## Release History
 
