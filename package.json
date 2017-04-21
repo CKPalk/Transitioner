@@ -1,0 +1,17 @@
+{
+  "name": "transitioner",
+  "version": "1.0.1",
+  "description": "React component to simplify a transiting group.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "keywords": [
+    "React",
+    "Animation",
+    "Transition",
+    "Component"
+  ],
+  "author": "Cameron Palk <ckpalk@comcast.net>",
+  "license": "MIT"
+}
