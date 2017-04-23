@@ -27,6 +27,32 @@ Inject style changes directly to children rather than using static stylesheets.
     from: { /* Styles at start */ },
     to: { /* Styles at end */ }
   }
+
+
+  // Example
+  const Transitioner = require('transitioner')
+  const TimingFunctions = Transitioner.timingFunctions
+
+  const transitionIn = {
+    from: { top: '-100%', opacity: 0 },
+    to  : { top: 0,       opacity: 1 },
+  }
+  const transitionOut = {
+    from: { top: 0,      opacity: 1 },
+    to  : { top: '100%', opacity: 0 }
+  }
+
+  <Transitioner
+    duration={750}
+    delay={0}
+    timingFunction={TimingFunctions.quad.easeIn}
+    transitionAppear={{ ...transitionIn, delay: 500 }}
+    transitionEnter={transitionIn}
+    transitionLeave={transitionOut}
+  >
+    {children}
+  </Transitioner>
+
 ```
 
 ## Release History

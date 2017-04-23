@@ -165,7 +165,7 @@ const STRING_TO_TIMING_FUNCTION = flatten(
 
 
 module.exports = {
-  TRANSITION_FUNCTIONS,
+  timingFunctions: TRANSITION_FUNCTIONS,
   STRING_TO_TIMING_FUNCTION,
   camelToDashString,
   mergeChildMappings,
