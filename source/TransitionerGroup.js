@@ -1,18 +1,17 @@
 /* eslint-disable no-restricted-syntax, guard-for-in, no-prototype-builtins, no-underscore-dangle */
-const React = require('react')
-const chain = require('chain-function')
+import React from 'react'
+import PropTypes from 'prop-types'
+import chain from 'chain-function'
 
-const transitionHelpers = require('./transitionHelpers')
-const getChildMapping = transitionHelpers.getChildMapping
-const mergeChildMappings = transitionHelpers.mergeChildMappings
+import { getChildMapping, mergeChildMappings } from './transitionHelpers'
 
 
-module.exports = class TransitionerGroup extends React.Component {
+export default class TransitionerGroup extends React.Component {
 
   static propTypes = {
-    component: React.PropTypes.any,
-    childFactory: React.PropTypes.func,
-    children: React.PropTypes.node
+    component: PropTypes.any,
+    childFactory: PropTypes.func,
+    children: PropTypes.node
   }
 
   static defaultProps = {

@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-syntax, guard-for-in, no-prototype-builtins, no-underscore-dangle */
-const Children = require('react').Children
+import { Children } from 'react'
 
 
 /**
@@ -8,7 +8,7 @@ const Children = require('react').Children
  * @param {*} children `this.props.children`
  * @return {object} Mapping of key to child
  */
-function getChildMapping(children) {
+export function getChildMapping(children) {
   if (!children)
     return children
 
@@ -34,7 +34,7 @@ function getChildMapping(children) {
  * @return {object} a key set that contains all keys in `prev` and all keys
  * in `next` in a reasonable order.
  */
-function mergeChildMappings(prev = {}, next = {}) {
+export function mergeChildMappings(prev = {}, next = {}) {
   function getValueForKey(key) {
     if (next.hasOwnProperty(key))
       return next[key]
@@ -78,26 +78,14 @@ function mergeChildMappings(prev = {}, next = {}) {
   return childMapping
 }
 
-function camelToDashString(string = '') {
+export function camelToDashString(string = '') {
   return (string.match(/(^|[A-Z]).+?(?=([A-Z]|$))/g) || [])
     .map(s => s.toLowerCase())
     .join('-')
 }
 
-function flatten(object = {}, keyTemplate = ((p, c) => `${p}_${c}`)) {
-  function recFlatten(obj, parentKey) {
-    return Object.keys(obj).reduce((agg, key) => {
-      const value = obj[key]
-      return (typeof value === 'object') ?
-        { ...agg, ...recFlatten(obj[key], key) } :
-        { ...agg, [parentKey ? keyTemplate(parentKey, key) : key]: value }
-    }, {})
-  }
-  return recFlatten(object)
-}
 
-
-const TRANSITION_FUNCTIONS = {
+export const timingFunctions = {
 
   // defaults
   linear: 'linear',
@@ -157,17 +145,18 @@ const TRANSITION_FUNCTIONS = {
 }
 
 
-const STRING_TO_TIMING_FUNCTION = flatten(
-  TRANSITION_FUNCTIONS,
-  (parentKey, childKey) =>
-    `${childKey}${parentKey.charAt(0).toUpperCase()}${parentKey.slice(1)}`
-)
-
-
-module.exports = {
-  timingFunctions: TRANSITION_FUNCTIONS,
-  STRING_TO_TIMING_FUNCTION,
-  camelToDashString,
-  mergeChildMappings,
-  getChildMapping
+function flatten(object = {}, keyTemplate = ((p, c) => `${p}_${c}`)) {
+  function recFlatten(obj, parentKey) {
+    return Object.keys(obj).reduce((agg, key) => {
+      const value = obj[key]
+      return (typeof value === 'object') ?
+        { ...agg, ...recFlatten(obj[key], key) } :
+        { ...agg, [parentKey ? keyTemplate(parentKey, key) : key]: value }
+    }, {})
+  }
+  return recFlatten(object)
 }
+
+
+const keyCombiner = (pk, ck) => `${ck}${pk.charAt(0).toUpperCase()}${pk.slice(1)}`
+export const STRING_TO_TIMING_FUNCTION = flatten(timingFunctions, keyCombiner)

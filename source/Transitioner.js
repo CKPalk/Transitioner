@@ -1,10 +1,14 @@
 /* eslint-disable react/no-unused-prop-types */
-const React = require('react')
+import React from 'react'
+import PropTypes from 'prop-types'
 
-const TransitionerGroup = require('./TransitionerGroup')
-const TransitionerGroupChild = require('./TransitionerGroupChild')
+import { timingFunctions } from './transitionHelpers'
+import TransitionerGroup from './TransitionerGroup'
+import TransitionerGroupChild from './TransitionerGroupChild'
 
-class Transitioner extends React.Component {
+module.exports = class Transitioner extends React.Component {
+
+  static timingFunctions = timingFunctions
 
   static propTypes = {
     duration: PropTypes.number,
@@ -61,9 +65,4 @@ class Transitioner extends React.Component {
       { ...this.props, childFactory: this.wrapChild }
     )
   }
-}
-
-module.exports = {
-  Transitioner,
-  TRANSITION_FUNCTIONS: require('./transitionHelpers').TRANSITION_FUNCTIONS
 }

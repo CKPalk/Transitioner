@@ -1,3 +1,8 @@
+
+node_modules
+distribution
+
+
 # Logs
 logs
 *.log
@@ -28,9 +33,6 @@ bower_components
 
 # node-waf configuration
 .lock-wscript
-
-# Dependency directories
-node_modules/
 
 # Optional npm cache directory
 .npm

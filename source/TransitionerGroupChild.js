@@ -1,39 +1,40 @@
 /* eslint-disable react/no-unused-prop-types */
-const React = require('react')
-const { findDOMNode } = require('react-dom')
-const { camelToDashString, STRING_TO_TIMING_FUNCTION } = require('./transitionHelpers')
+import React from 'react'
+import PropTypes from 'prop-types'
+import { findDOMNode } from 'react-dom'
+import { camelToDashString, STRING_TO_TIMING_FUNCTION } from './transitionHelpers'
 
 
-module.exports = class TransitionerGroupChild extends React.Component {
+export default class TransitionerGroupChild extends React.Component {
 
-  static React.PropTypes = {
-    children: React.PropTypes.node,
+  static propTypes = {
+    children: PropTypes.node,
 
-    duration: React.PropTypes.number.isRequired,
-    timingFunction: React.PropTypes.string.isRequired,
+    duration: PropTypes.number.isRequired,
+    timingFunction: PropTypes.string.isRequired,
 
-    transitionAppear: React.PropTypes.shape({
-      from: React.PropTypes.object.isRequired,
-      to: React.PropTypes.object.isRequired,
-      duration: React.PropTypes.number,
-      timingFunction: React.PropTypes.string,
-      delay: React.PropTypes.number
+    transitionAppear: PropTypes.shape({
+      from: PropTypes.object.isRequired,
+      to: PropTypes.object.isRequired,
+      duration: PropTypes.number,
+      timingFunction: PropTypes.string,
+      delay: PropTypes.number
     }),
 
-    transitionEnter: React.PropTypes.shape({
-      from: React.PropTypes.object.isRequired,
-      to: React.PropTypes.object.isRequired,
-      duration: React.PropTypes.number,
-      timingFunction: React.PropTypes.string,
-      delay: React.PropTypes.number
+    transitionEnter: PropTypes.shape({
+      from: PropTypes.object.isRequired,
+      to: PropTypes.object.isRequired,
+      duration: PropTypes.number,
+      timingFunction: PropTypes.string,
+      delay: PropTypes.number
     }),
 
-    transitionLeave: React.PropTypes.shape({
-      from: React.PropTypes.object.isRequired,
-      to: React.PropTypes.object.isRequired,
-      duration: React.PropTypes.number,
-      timingFunction: React.PropTypes.string,
-      delay: React.PropTypes.number
+    transitionLeave: PropTypes.shape({
+      from: PropTypes.object.isRequired,
+      to: PropTypes.object.isRequired,
+      duration: PropTypes.number,
+      timingFunction: PropTypes.string,
+      delay: PropTypes.number
     })
   }
 
