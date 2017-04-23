@@ -58,4 +58,5 @@ Inject style changes directly to children rather than using static stylesheets.
 ## Release History
 
 * 1.0.0 Initial Release
-* 1.0.1 Initial Release
+* 1.0.2 Transpiler added
+* 1.0.4 Added React dependency
