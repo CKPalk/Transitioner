@@ -7,7 +7,7 @@ Inject style changes directly to children rather than using static stylesheets.
 
 ## Installation
 
-  npm install transitioner --save
+```npm install transitioner --save```
 
 ## Usage
 
